@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: simple-bot-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+    - host: simple-bot.super-cluster-dns-41447ffd.hcp.eastus.azmk8s.io
+      http:
+        paths:
+          - backend: # How the ingress will handle the requests
+              service:
+                name: simple-bot-service # Which service the request will be forwarded to
+                port:
+                  number: 80 # Which port in that service
+            path: / # Which path is this rule referring to
+            pathType: Prefix # See more at https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types

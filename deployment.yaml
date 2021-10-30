@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-bot-deployment
+  labels:
+    app: simple-bot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: simple-bot
+  template:
+    metadata:
+      labels:
+        app: simple-bot
+    spec:
+      containers:
+      - name: simple-bot
+        image: thmyrk/simple-bot:latest
+        ports:
+        - containerPort: 3000

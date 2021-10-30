@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-bot-service
+spec:
+  type: ClusterIP
+  selector:
+    app: simple-bot
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
