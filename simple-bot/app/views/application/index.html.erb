@@ -1,0 +1,14 @@
+<h1>Chat with a bot</h1>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li><b><%= message.source.capitalize %></b>: <%= message.message %></li>
+  <% end %>
+</ul>
+
+<%= form_with url: "/", method: :post do |form| %>
+  <%= form.text_field :message %>
+  <%= form.hidden_field :source, value: "rails" %>
+  <%= form.hidden_field :token, value: @token %>
+  <%= form.submit "Send" %>
+<% end %>
